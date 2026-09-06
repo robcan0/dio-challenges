@@ -44,7 +44,8 @@ dio-challenges/
 ├── backend/
 │   └── database/
 │       └── sql/
-│          └── ecommerce/
+│          ├── ecommerce/
+│          └── oficina-mecanica/           
 └── README.md
 ```
 
@@ -52,13 +53,12 @@ A estrutura poderá ser expandida ou adaptada conforme a quantidade e a natureza
 
 ## 🧩 Desafios
 
-#### Os desafios serão adicionados e organizados conforme forem desenvolvidos.
-
 ### Backend
 
-| Desafio                                                 | Tecnologia  | Ferramenta      | Status       |
-| ------------------------------------------------------- | ------------| --------------- | ------------ |
-| [Modelagem de dados](./backend/database/sql/ecommerce/) | EER Diagram | MySQL Workbench | ✅ Concluído |
+| Desafios                                                                           | Tecnologias | Ferramentas      | Status      |
+| --------------------------------------------------------------------------------- | ----------- | --------------- | ----------- |
+| [Modelagem de dados - Ecommerce](./backend/database/sql/ecommerce/)               | EER Diagram | MySQL Workbench | ✅ Concluído |
+| [Modelagem de dados - Oficina Mecânica](./backend/database/sql/oficina-mecanica/) | EER Diagram | MySQL Workbench | ✅ Concluído |
 
 ## ▶️ Como executar os projetos
 
@@ -66,11 +66,11 @@ Cada projeto possui requisitos e instruções de execução específicos, de aco
 
 ### 📥 Obter um projeto específico
 
-Para baixar somente a pasta do projeto desejado, utilizando o Git:
+Para baixar somente o conteúdo do projeto desejado, sem baixar inicialmente o conteúdo dos outros projetos, utilize o Git com `partial clone` e `sparse-checkout`:
 
 ```bash
-# Clonar o repositório sem baixar o conteúdo dos outros projetos
-git clone --no-checkout https://github.com/seu-usuario/seu-repositorio.git
+# Clonar o repositório sem baixar inicialmente o conteúdo dos arquivos
+git clone --filter=blob:none --no-checkout https://github.com/seu-usuario/seu-repositorio.git
 
 # Acessar o repositório
 cd seu-repositorio
@@ -81,7 +81,7 @@ git sparse-checkout init --cone
 # Selecionar a pasta do projeto
 git sparse-checkout set caminho/da/pasta-do-projeto
 
-# Baixar os arquivos da branch principal
+# Baixar os arquivos do projeto selecionado
 git checkout main
 ```
 
