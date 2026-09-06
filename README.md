@@ -15,7 +15,7 @@ O objetivo é reunir as soluções desenvolvidas durante os estudos, documentar 
 
 ## 📌 Sobre o repositório
 
-Este repositório reúne desafios de **backend, frontend** propostos pela [DIO](https://www.dio.me/), com soluções desenvolvidas em diferentes linguagens, frameworks, bancos de dados e ferramentas.
+Este repositório reúne desafios propostos pela [DIO](https://www.dio.me/), com soluções desenvolvidas em diferentes linguagens, frameworks, bancos de dados e ferramentas.
 
 O repositório tem como objetivos:
 
@@ -30,10 +30,10 @@ Cada desafio possui sua própria pasta, contendo o código-fonte e os arquivos r
 
 As tecnologias serão adicionadas conforme novos desafios forem incorporados ao repositório.
 
-* **Linguagens:** Em breve
+* **Linguagens:** SQL
 * **Frameworks e bibliotecas:** Em breve
-* **Bancos de dados:** Em breve
-* **Ferramentas:** Em breve
+* **Bancos de dados:** MySQL
+* **Ferramentas:** MySQL Workbench, VS Code, Git e GitHub
 
 ## 📂 Estrutura do repositório
 
@@ -42,10 +42,9 @@ Os desafios serão organizados por categoria e, posteriormente, por projeto:
 ```text
 dio-challenges/
 ├── backend/
-│   └── desafio-01/
-│
-├── frontend/
-│   └── desafio-01/
+│   └── database/
+│       └── sql/
+│          └── ecommerce/
 └── README.md
 ```
 
@@ -53,43 +52,49 @@ A estrutura poderá ser expandida ou adaptada conforme a quantidade e a natureza
 
 ## 🧩 Desafios
 
-Os desafios serão adicionados e organizados conforme forem desenvolvidos.
+#### Os desafios serão adicionados e organizados conforme forem desenvolvidos.
 
 ### Backend
 
-| Desafio | Tecnologia | Ferramenta | Status   |
-| ------- | ---------- | ---------- | -------- |
-| —       | —          | —          | Em breve |
-
-### Frontend
-
-| Desafio | Tecnologia | Ferramenta | Status   |
-| ------- | ---------- | ---------- | -------- |
-| —       | —          | —          | Em breve |
+| Desafio                                                 | Tecnologia  | Ferramenta      | Status       |
+| ------------------------------------------------------- | ------------| --------------- | ------------ |
+| [Modelagem de dados](./backend/database/sql/ecommerce/) | EER Diagram | MySQL Workbench | ✅ Concluído |
 
 ## ▶️ Como executar os projetos
 
-Cada desafio possui requisitos e instruções de execução específicos, de acordo com as tecnologias utilizadas.
+Cada projeto possui requisitos e instruções de execução específicos, de acordo com as tecnologias utilizadas.
 
-Para executar um projeto:
+### 📥 Obter um projeto específico
 
-1. Clone este repositório;
-2. Acesse a pasta do desafio desejado;
-3. Consulte o `README.md` específico do projeto, quando disponível;
-4. Siga as instruções de instalação e execução descritas para o desafio.
+Para baixar somente a pasta do projeto desejado, utilizando o Git:
 
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/seu-repositorio.git
+# Clonar o repositório sem baixar o conteúdo dos outros projetos
+git clone --no-checkout https://github.com/seu-usuario/seu-repositorio.git
 
-# Acesse a pasta do projeto
-cd nome-do-projeto
+# Acessar o repositório
+cd seu-repositorio
+
+# Habilitar o sparse-checkout
+git sparse-checkout init --cone
+
+# Selecionar a pasta do projeto
+git sparse-checkout set caminho/da/pasta-do-projeto
+
+# Baixar os arquivos da branch principal
+git checkout main
 ```
 
-As instruções específicas de cada projeto serão adicionadas conforme os desafios forem incorporados ao repositório.
+Substitua `caminho/da/pasta-do-projeto` pelo caminho correspondente ao desafio que deseja obter.
+
+### ▶️ Executar o projeto
+
+Após obter os arquivos, acesse a pasta do projeto e consulte o `README.md` específico, quando disponível, para verificar os requisitos, instalação, configuração e comandos necessários para sua execução.
+
+As instruções de execução são mantidas individualmente em cada projeto, considerando suas respectivas tecnologias e dependências.
 
 ## 📄 Licença
 
 Os projetos desenvolvidos neste repositório estão disponibilizados sob a licença [MIT](./LICENSE), quando aplicável.
 
-Os desafios, enunciados, materiais didáticos e demais conteúdos fornecidos pela DIO permanecem sujeitos às respectivas condições de uso e direitos de seus autores.
+Os desafios, enunciados, materiais didáticos e demais conteúdos fornecidos pela [DIO](https://www.dio.me/) permanecem sujeitos às respectivas condições de uso e direitos de seus autores.
