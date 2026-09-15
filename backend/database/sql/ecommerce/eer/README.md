@@ -8,10 +8,10 @@ O modelo cobre o fluxo completo de um e-commerce — do cadastro do cliente até
 
 O projeto é composto pelos seguintes arquivos:
 
-- **[`.pdf`](./assets/desafio_ecommerce_SQL.pdf):** documento com os requisitos e instruções utilizados como referência para a modelagem.
-- **[`.mwb`](./mysql/eer_ecommerce_DIO.mwb):** arquivo original da modelagem desenvolvida no **EER Diagram do MySQL Workbench 8.0**.
-- **[`.sql`](./mysql/eer_ecommerce_DIO.sql):** script SQL gerado por meio do processo de Forward Engineering do MySQL Workbench 8.0.
-- **[`.svg`](./assets/eer_ecommerce_SQL.svg):** versão vetorial da modelagem EER.
+- **[`.pdf`](./assets/eer_ecommerce_challenge.pdf):** documento com os requisitos e instruções utilizados como referência para a modelagem.
+- **[`.mwb`](./eer_ecommerce.mwb):** arquivo original da modelagem desenvolvida no **EER Diagram do MySQL Workbench 8.0**.
+- **[`.sql`](./eer_ecommerce.sql):** script SQL gerado por meio do processo de Forward Engineering do MySQL Workbench 8.0.
+- **[`.svg`](./assets/eer_ecommerce.svg):** versão vetorial da modelagem EER.
 
 ## 📋 Requisitos do negócio
 
@@ -80,10 +80,10 @@ O banco de dados (`ecommerce_db`) está dividido nos seguintes domínios:
 
 1. Tenha o MySQL 8.0+ instalado.
 2. Clone este repositório.
-3. Execute o script `eer_ecommerce_DIO.sql` na sua IDE de preferência (MySQL Workbench, DBeaver, DataGrip) ou via linha de comando:
+3. Execute o script `eer_ecommerce.sql` na sua IDE de preferência (MySQL Workbench, DBeaver, DataGrip) ou via linha de comando:
 
 ```bash
-mysql -u seu_usuario -p < eer_ecommerce_DIO.sql
+mysql -u seu_usuario -p < eer_ecommerce.sql
 ```
 
 O schema `ecommerce_db` será criado automaticamente com todas as tabelas, chaves e índices.

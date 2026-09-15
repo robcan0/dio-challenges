@@ -6,11 +6,11 @@ Este repositório contém a modelagem de um banco de dados relacional para o con
 
 O projeto é composto pelos seguintes arquivos:
 
-- **[`.pdf`](./assets/desafio_oficina_mecanica.pdf):** documento com os requisitos e instruções utilizados como referência para a modelagem.
-- **[`.mwb`](./mysql/eer_oficina_mecanica.mwb):** arquivo original da modelagem desenvolvida no **EER Diagram do MySQL Workbench 8.0**.
-- **[`.sql`](./mysql/eer_oficina_mecanica.sql):** script SQL gerado por meio do processo de Forward Engineering do MySQL Workbench 8.0.
-- **[`.png`](./assets/eer_oficina_mecanica.png):** imagem da modelagem EER para visualização rápida.
-- **[`.svg`](./assets/eer_oficina_mecanica.svg):** versão vetorial da modelagem EER.
+- **[`.pdf`](./assets/mechanic_shop_challenge.pdf):** documento com os requisitos e instruções utilizados como referência para a modelagem.
+- **[`.mwb`](./mysql/eer_mechanic_shop.mwb):** arquivo original da modelagem desenvolvida no **EER Diagram do MySQL Workbench 8.0**.
+- **[`.sql`](./mysql/eer_mechanic_shop.sql):** script SQL gerado por meio do processo de Forward Engineering do MySQL Workbench 8.0.
+- **[`.png`](./assets/eer_mechanic_shop.png):** imagem da modelagem EER para visualização rápida.
+- **[`.svg`](./assets/eer_mechanic_shop.svg):** versão vetorial da modelagem EER.
 
 ## Regras de Negócio
 
@@ -30,7 +30,7 @@ O sistema atende às seguintes necessidades:
 
 ## Estrutura do Banco de Dados
 
-O schema `oficina_mecanica` representa o cenário descrito por meio das seguintes tabelas:
+O schema `mechanic_shop` representa o cenário descrito por meio das seguintes tabelas:
 
 | Tabela | Descrição |
 |---|---|
@@ -53,8 +53,8 @@ Essa separação não contradiz a narrativa. Ela diferencia o prazo previsto da 
 
 Caso o objetivo seja apenas consultar a modelagem, sem executar o banco de dados, não é necessário instalar o MySQL. Basta:
 
-- **Visualização rápida:** abrir o arquivo [`./assets/eer_oficina_mecanica.png`](./assets/eer_oficina_mecanica.png) ou [`./assets/eer_oficina_mecanica.svg`](./assets/eer_oficina_mecanica.svg) diretamente no repositório ou em qualquer visualizador de imagens. O `.svg` é recomendado para redimensionamento sem perda de qualidade.
-- **Visualização interativa:** abrir o arquivo [`./mysql/eer_oficina_mecanica.mwb`](./mysql/eer_oficina_mecanica.mwb) no **MySQL Workbench** (versão 8.0+), o que permite navegar pelo diagrama EER, inspecionar tabelas, relacionamentos e atributos de forma interativa, sem necessidade de conexão com um servidor.
+- **Visualização rápida:** abrir o arquivo [`./assets/eer_mechanic_shop.png`](./assets/eer_mechanic_shop.png) ou [`./assets/eer_mechanic_shop.svg`](./assets/eer_mechanic_shop.svg) diretamente no repositório ou em qualquer visualizador de imagens. O `.svg` é recomendado para redimensionamento sem perda de qualidade.
+- **Visualização interativa:** abrir o arquivo [`./mysql/eer_mechanic_shop.mwb`](./mysql/eer_mechanic_shop.mwb) no **MySQL Workbench** (versão 8.0+), o que permite navegar pelo diagrama EER, inspecionar tabelas, relacionamentos e atributos de forma interativa, sem necessidade de conexão com um servidor.
 
 ## Como Utilizar
 
@@ -64,17 +64,17 @@ Para efetivamente executar o script:
 
    > **Atenção à versão:** o script utiliza a cláusula `VISIBLE` em seus índices — recurso disponível apenas a partir do MySQL 8.0. Em versões 5.7 ou anteriores, a execução falhará com erro de sintaxe.
 
-2. O usuário utilizado para executar o script precisa ter privilégio `CREATE` no servidor, necessário para a criação do schema `oficina_mecanica`.
+2. O usuário utilizado para executar o script precisa ter privilégio `CREATE` no servidor, necessário para a criação do schema `mechanic_shop`.
 
 3. Execute o script diretamente pelo terminal, a partir da raiz do repositório:
 
 ```bash
-mysql -u seu_usuario -p < ./mysql/eer_oficina_mecanica.sql
+mysql -u seu_usuario -p < ./mysql/eer_mechanic_shop.sql
 ```
 
-Ou abra o arquivo [`./mysql/eer_oficina_mecanica.sql`](./mysql/eer_oficina_mecanica.sql) no MySQL Workbench e execute o script integralmente.
+Ou abra o arquivo [`./mysql/eer_mechanic_shop.sql`](./mysql/eer_mechanic_shop.sql) no MySQL Workbench e execute o script integralmente.
 
-4. O script provisiona o schema `oficina_mecanica` (criando-o apenas se ainda não existir, graças ao uso de `IF NOT EXISTS`) com charset `utf8mb4` e todas as tabelas necessárias, incluindo suas chaves primárias, chaves estrangeiras e respectivos índices.
+4. O script provisiona o schema `mechanic_shop` (criando-o apenas se ainda não existir, graças ao uso de `IF NOT EXISTS`) com charset `utf8mb4` e todas as tabelas necessárias, incluindo suas chaves primárias, chaves estrangeiras e respectivos índices.
 
 ## Créditos
 

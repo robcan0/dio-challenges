@@ -44,8 +44,14 @@ dio-challenges/
 ├── backend/
 │   └── database/
 │       └── sql/
-│          ├── ecommerce/
-│          └── oficina-mecanica/           
+│           ├── ecommerce/
+│           │   ├── eer/
+│           │   │   └── README.md
+│           │   └── ddl/
+│           │       └── README.md
+│           └── mechanic-shop/
+│               └── README.md
+├── LICENSE
 └── README.md
 ```
 
@@ -55,10 +61,11 @@ A estrutura poderá ser expandida ou adaptada conforme a quantidade e a natureza
 
 ### Backend
 
-| Desafios                                                                           | Tecnologias | Ferramentas      | Status      |
-| --------------------------------------------------------------------------------- | ----------- | --------------- | ----------- |
-| [Modelagem de dados - Ecommerce](./backend/database/sql/ecommerce/)               | EER Diagram | MySQL Workbench | ✅ Concluído |
-| [Modelagem de dados - Oficina Mecânica](./backend/database/sql/oficina-mecanica/) | EER Diagram | MySQL Workbench | ✅ Concluído |
+| Desafios                                                                          | Tecnologias | Ferramentas     | Status       |
+| --------------------------------------------------------------------------------- | ----------- | --------------- | -----------  |
+| [1. Modelagem de dados - Ecommerce](./backend/database/sql/ecommerce/eer/)           | EER Diagram | MySQL Workbench | ✅ Concluído |
+| [2. Modelagem de dados - Oficina Mecânica](./backend/database/sql/mechanic-shop/)    | EER Diagram | MySQL Workbench | ✅ Concluído |
+| [3. Implementação DDL - Ecommerce](./backend/database/sql/ecommerce/ddl/)            | DDL         | MySQL           | ✅ Concluído |
 
 ## ▶️ Como executar os projetos
 
