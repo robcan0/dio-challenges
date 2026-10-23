@@ -7,19 +7,11 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
 -- Schema ecommerce_db
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema ecommerce_db
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `ecommerce_db` DEFAULT CHARACTER SET utf8mb4 ;
 USE `ecommerce_db` ;
 
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`cliente`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`cliente` (
   `id_cliente` INT NOT NULL AUTO_INCREMENT,
   `nome_completo` VARCHAR(100) NOT NULL,
@@ -30,10 +22,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`cliente` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`endereco`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`endereco` (
   `id_endereco` INT NOT NULL AUTO_INCREMENT,
   `id_cliente` INT NOT NULL,
@@ -54,10 +43,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`endereco` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`fornecedor`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`fornecedor` (
   `id_fornecedor` INT NOT NULL AUTO_INCREMENT,
   `razao_social` VARCHAR(100) NOT NULL,
@@ -66,10 +52,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`fornecedor` (
   UNIQUE INDEX `cnpj_UNIQUE` (`cnpj` ASC) VISIBLE)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`vendedor`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`vendedor` (
   `id_vendedor` INT NOT NULL AUTO_INCREMENT,
   `razao_social` VARCHAR(100) NOT NULL,
@@ -78,10 +61,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`vendedor` (
   UNIQUE INDEX `cnpj_UNIQUE` (`cnpj` ASC) VISIBLE)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`cliente_PF`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`cliente_PF` (
   `cpf` CHAR(11) NOT NULL,
   `id_cliente` INT NOT NULL,
@@ -94,10 +74,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`cliente_PF` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`cliente_PJ`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`cliente_PJ` (
   `cnpj` CHAR(14) NOT NULL,
   `razao_social` VARCHAR(100) NOT NULL,
@@ -111,10 +88,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`cliente_PJ` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`forma_pagamento`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`forma_pagamento` (
   `id_pagamento` INT NOT NULL AUTO_INCREMENT,
   `id_cliente` INT NOT NULL,
@@ -129,10 +103,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`forma_pagamento` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`produto`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`produto` (
   `id_produto` INT NOT NULL AUTO_INCREMENT,
   `id_vendedor` INT NOT NULL,
@@ -155,10 +126,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`produto` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`pedido`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`pedido` (
   `id_pedido` INT NOT NULL AUTO_INCREMENT,
   `id_pagamento` INT NOT NULL,
@@ -189,10 +157,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`pedido` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`item_pedido`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`item_pedido` (
   `pedido_id_pedido` INT NOT NULL,
   `id_produto` INT NOT NULL,
@@ -213,10 +178,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`item_pedido` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
 -- Table `ecommerce_db`.`entrega`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ecommerce_db`.`entrega` (
   `id_entrega` INT NOT NULL AUTO_INCREMENT,
   `codigo_rastreio` VARCHAR(50) NULL,
@@ -230,7 +192,6 @@ CREATE TABLE IF NOT EXISTS `ecommerce_db`.`entrega` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

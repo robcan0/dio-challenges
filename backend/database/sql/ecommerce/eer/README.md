@@ -10,7 +10,9 @@ O projeto é composto pelos seguintes arquivos:
 
 - **[`.pdf`](./assets/eer_ecommerce_challenge.pdf):** documento com os requisitos e instruções utilizados como referência para a modelagem.
 - **[`.mwb`](./eer_ecommerce.mwb):** arquivo original da modelagem desenvolvida no **EER Diagram do MySQL Workbench 8.0**.
-- **[`.sql`](./eer_ecommerce.sql):** script SQL gerado por meio do processo de Forward Engineering do MySQL Workbench 8.0.
+- **[`eer_ecommerce.sql`](./eer_ecommerce.sql):** script de criação do schema e das tabelas, gerado via Forward Engineering do MySQL Workbench 8.0.
+- **[`eer_ecommerce_indexes.sql`](./eer_ecommerce_indexes.sql):** índices adicionais para consultas frequentes, com `EXPLAIN` de validação.
+- **[`eer_ecommerce_procedure.sql`](./eer_ecommerce_procedure.sql):** procedure `sp_manipula_cliente` (CRUD de cliente).
 - **[`.svg`](./assets/eer_ecommerce.svg):** versão vetorial da modelagem EER.
 
 ## 📋 Requisitos do negócio
@@ -76,17 +78,49 @@ O banco de dados (`ecommerce_db`) está dividido nos seguintes domínios:
 - **Restrição de exclusão** (`ON DELETE RESTRICT`): impede excluir clientes, endereços, pagamentos, produtos, fornecedores ou vendedores que já estejam vinculados a um pedido histórico — preservando o histórico de vendas.
 - **Domínios fechados** (`ENUM`): `status_pedido` (processando, concluído, cancelado) e `status_entrega` (aguardando coleta, em transporte, entregue, devolvido) padronizados para evitar inconsistências.
 
+## ⚡ Índices adicionais
+
+Definidos em `eer_ecommerce_indexes.sql` (os índices redundantes de FK em `pedido` e `endereco` são removidos, pois os compostos já os cobrem):
+
+| Tabela | Índice | Finalidade |
+|---|---|---|
+| `pedido` | `(id_cliente, data_compra)` | histórico de pedidos do cliente |
+| `pedido` | `(status_pedido, data_compra)` | pedidos por status e período |
+| `produto` | `(nome)` | busca por prefixo do nome |
+| `cliente` | `(nome_completo)` | busca por prefixo do nome |
+| `endereco` | `(id_cliente, padrao)` | endereço padrão do cliente |
+| `entrega` | `UNIQUE (codigo_rastreio)` | consulta e unicidade do rastreio |
+
+## 🧩 Procedure `sp_manipula_cliente`
+
+CRUD de `cliente` em uma única procedure, selecionado por `p_opcao`:
+
+| Opção | Operação | Observação |
+|---|---|---|
+| `1` | Inserir | retorna o novo `id_cliente` |
+| `2` | Consultar | `p_id_cliente` nulo lista todos |
+| `3` | Atualizar | parâmetros nulos mantêm o valor atual |
+| `4` | Excluir | falha se o cliente tiver pedidos (`RESTRICT`) |
+
+Executa em transação, com `ROLLBACK` e mensagem de erro em caso de falha (ex.: e-mail duplicado).
+
+```sql
+CALL sp_manipula_cliente(1, NULL, 'Maria Souza', 'maria@email.com', '5511999999999', NULL);
+```
+
 ## 🚀 Como executar
 
 1. Tenha o MySQL 8.0+ instalado.
 2. Clone este repositório.
-3. Execute o script `eer_ecommerce.sql` na sua IDE de preferência (MySQL Workbench, DBeaver, DataGrip) ou via linha de comando:
+3. Execute os scripts, nesta ordem, na sua IDE de preferência (MySQL Workbench, DBeaver, DataGrip) ou via linha de comando:
 
 ```bash
 mysql -u seu_usuario -p < eer_ecommerce.sql
+mysql -u seu_usuario -p < eer_ecommerce_indexes.sql
+mysql -u seu_usuario -p < eer_ecommerce_procedure.sql
 ```
 
-O schema `ecommerce_db` será criado automaticamente com todas as tabelas, chaves e índices.
+O primeiro script cria o schema `ecommerce_db` com tabelas e chaves; o segundo adiciona os índices; o terceiro cria a procedure.
 
 ## 🛠️ Tecnologias
 
